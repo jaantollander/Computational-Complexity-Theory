@@ -11,41 +11,25 @@ urlcolor: "blue"
 
 # H1.1
 ## i)
-We assume that it is known that the logarithmic function grows slower than linear function, that is, $\log_2 n ≤ n$ for all $n∈ℕ$ and linear function grows slower than polynomial function, that is, $n=O(n^t)$ where $t>0$.
+We say that $g(n)$ dominates $f(n)$ if 
+$$
+\lim_{n→∞} \frac{f(n)}{g(n)} → 0.
+$$
 
 ---
 
-Let prove $(\log_2 n)^s=O(n^r)$.
+Let prove $(\log_2 n)^s=O(n^r)$ for $s,r>1$, that is $n^r$ dominates $(\log_2 n)^s$.
 
-For $s,r>1$ and positive constants $c$ and $n_0$ such that when $n≥n_0$ we have
 $$
-\begin{aligned}
-(\log_2 n)^s &≤ c n^r \\
-\log_2 n &≤ c^{1/s} n^{r/s}
-\end{aligned}
+\lim_{n→∞} \frac{(\log_2 n)^s}{n^r} = \left(\lim_{n→∞} \frac{\log_2 n}{n^{r/s}}\right)^s
 $$
-We have $c'=c^{1/s}>0$ and $t=r/s>0$ then
+Using L'hopital's rule
 $$
-\log_2 n ≤ c' n^t,
+\left(\lim_{n→∞} \frac{1}{(r/s) n^{r/s} \log (2)}\right)^s → 0
 $$
-which indicates that the polynomial function grows faster than logarithmic function, which is true according to the assumptions.
 
----
+From the above limit, we see that $n^r≠O((\log_2 n)^s)$, since $n^r$ dominates $(\log_2 n)^s.$
 
-Lets prove $n^r≠O((\log_2 n)^s)$.
-
-Assume $n^r≠O((\log_2 n)^s)$, then
-$$
-\begin{aligned}
-n^r ≤ c (\log_2 n)^s \\
-n^{r/s} ≤ c^{1/s} \log_2 n \\
-\end{aligned}
-$$
-We have $c'=c^{1/s}>0$ and $t=r/s>0$ then
-$$
-n^t ≤ c' \log_2 n,
-$$
-would indicate that the logarithmic function grows faster than polynomial function, which is not true according to the assumptions.
 
 ## ii)
 Upper bound
