@@ -16,7 +16,7 @@ geometry:
 ---
 <!-- Definitions, notation, examples -->
 
-<!-- O-notation,  Language, example of tape, Deterministic $k$-tape Turing machine, nondeterministic Turing machine, Decidability, acceptability, Halting problem, reduction, Rice's theorem, Complexity classes -->
+<!-- O-notation, Language, example of tape, example of transition diagram, Deterministic $k$-tape Turing machine, nondeterministic Turing machine, Decidability, acceptability, Halting problem, reduction, Rice's theorem, Complexity classes -->
 
 
 # Deterministic single-tape Turing machine
@@ -61,8 +61,30 @@ A **configuration** of machine $M$ is a triple $(q,w,u)$, where
 * $w∈Σ^+$ is the string to the left of the cursor, including the symbol scanned by the cursor, and
 * $u∈Σ^*$ is the string to the right of the cursor
 
-The relation $→^M$ **yields in one step**: $(q,w,u)→^M (q',w',u'),$ where $q',w',u'$ are obtained according to the transition function.
+The relation $→^M$ **yields in one step** $(q,w,u)→^M (q',w',u'),$ where $q',w',u'$ are obtained according to the transition function.
 
-The relation **yields in $k$ steps** $→^{M^k}$.
+The relation **yields in $k$ steps** $(q_1,w_1,u_1)→^{M^k}(q_k,w_k,u_k)$ if there exists configurations 
+$$
+(q_1,w_1,u_1) →^{M} (q_2,w_2,u_2) →^{M} ... →^{M}(q_k,w_k,u_k)
+$$
 
-The relation **yields** $→^{M^*}$.
+The relation **yields** $(q,w,u)→^{M^*}(q',w',u')$ if there exists some $k≥0$ such that $(q,w,u)→^{M^k}(q',w',u').$
+
+# Decidable and Semidecidable Languages
+Let $L⊆(Σ-\{⊔\})^*$ be a **language**.
+
+A Turing machine $M$ **decides** $L$, if for every string $x∈(Σ-\{⊔\})^*$, 
+
+* if $x∈L$, then $M(x)=yes$ and
+* if $x∈L$, then $M(x)=no$.
+
+If $L$ is decided by some Turing machine, $L$ is called a **decidable** language.
+
+A Turing machine $M$ **computes** a function $$f:(Σ-\{⊔\})^* → Σ^*,$$ if for every string $x∈(Σ-\{⊔\})^*$, $M(x)=f(x).$ If such an $M$ exists, $f$ is called a **computable** function.
+
+A Turing machine $M$ **accepts** or **semidecides** $L$, if for every string $x∈(Σ-\{⊔\})^*$, 
+
+* if $x∈L$, then $M(x)=yes$ and
+* if $x∈L$, then $M(x)=↗$.
+
+If $L$ is accepted by some Turing machine, $L$ is called a **semidecidable** language.
