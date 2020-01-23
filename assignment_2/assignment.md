@@ -18,7 +18,7 @@ Input $x∈A∪B$ implies $x∈A$ or $x∈B$. We define nondeterministic Turing 
 Then, for all inputs $x∈A∪B$, $x$ is decided by $N$ in polynomial time. Thus language $A∪B$ is in $\mathbf{NP}$.
 
 ## Intersection
-Since $A∩B⊆A∪B$, the language $A∩B$ is also decided by $N$ in polynomial time.  Therefore, it is in $\mathbf{NP}$.
+Since $A∩B⊆A$, the language $A∩B$ is also decided by $N_A$ in polynomial time. Therefore, it is in $\mathbf{NP}$.
 
 # H2.2
 Need to show that $\mathbf{NP}⊆\mathbf{PSPACE}$ and $\mathbf{PSPACE}⊆\mathbf{EXP}$.
