@@ -26,7 +26,9 @@ A Turing machine is a quadruple $M=(K,Σ,δ,s)$ where
 * $Σ$ is a finite set of **symbols** (the **alphabet** of $M$) so that $⊳,⊔∈Σ$
   * $⊳$ is the **start symbol** and
   * $⊔$ is the **blank symbol**,
-* $δ$ is the **transition function**: $$K×Σ → (K∪\{h,yes,no\})×Σ×\{→,←,-\}$$ where the **halting state** $h$, the **accepting state** $yes$, and the **rejecting state** $no$ are not in $K$, and the symbols $→$ (right), $←$ (left), and $-$ (stay) indicate **cursor directions** on the input tape.
+* $δ$ is the **transition function**: 
+  $$δ : K×Σ → (K∪\{h,yes,no\})×Σ×\{→,←,-\}$$
+  where the **halting state** $h$, the **accepting state** $yes$, and the **rejecting state** $no$ are not in $K$, and the symbols $→$ (right), $←$ (left), and $-$ (stay) indicate **cursor directions** on the input tape.
 
 ## Transition functions
 For current state $q∈K$ and current symbol $σ∈Σ$, $δ(q,σ)=(p,ρ,D)$ where 
@@ -88,3 +90,34 @@ A Turing machine $M$ **accepts** or **semidecides** $L$, if for every string $x�
 * if $x∈L$, then $M(x)=↗$.
 
 If $L$ is accepted by some Turing machine, $L$ is called a **semidecidable** language.
+
+
+## Deterministic $k$-tape Turing machine
+A **$k$-tape Turing machine**, for some integer $k≥1,$ is a quadruple $M=(K,Σ,δ,s)$ where the transition function is generalized to handle $k$-tapes simultaneously
+$$
+δ : K×Σ → (K∪\{h,yes,no\})×(Σ×\{→,←,-\})^k.
+$$
+
+Transitions for $k$-tape machines are of the form
+$$
+δ(q,σ_1,...,σ_2) = (p,ρ_1,D_1,...,ρ_k,D_k).
+$$
+
+A **configuration** is defined as a $2k+1$-tuple
+$$
+(q,w_1,u_1,...,w_k,u_k).
+$$
+
+A $k$-tape machine with input $x$ starts from the configuration
+$$
+(s,⊳,x,⊳,ϵ,...,⊳,ϵ),
+$$
+where $ϵ$ is the empty string.
+
+**Output** is defined as for standard machines
+
+* if $(s,⊳,x,⊳,ϵ,...,⊳,ϵ)→^{M^*} (h,w_1,u_1,...,w_k,u_k)$, then $M(x)=y$ where $y$ is $w_k u_k$ with the leading $⊳$ and trailing $⊔$s removed, that is, output is read from the last ($k$th)tape.
+
+The **runtime** of $M$ on input $x$ is $t$ if 
+$$(s,⊳,x,⊳,ϵ,...,⊳,ϵ)→^{M^t} (H,w_1,u_1,...,w_k,u_k),$$
+where $H∈\{h,yes,no\}$. If $M(x)=↗$, then the runtime is considered to be $∞.$
