@@ -16,7 +16,10 @@ geometry:
 ---
 <!-- Definitions, notation, examples -->
 
-<!-- O-notation, Language, example of tape, example of transition diagram, Deterministic $k$-tape Turing machine, nondeterministic Turing machine, Decidability, acceptability, Halting problem, reduction, Rice's theorem, Complexity classes -->
+<!-- O-notation, example of tape, example of transition diagram, Halting problem, reduction, Rice's theorem
+
+Linear speedup: Time and memory
+-->
 
 
 # Deterministic single-tape Turing machine
@@ -121,3 +124,55 @@ where $ϵ$ is the empty string.
 The **runtime** of $M$ on input $x$ is $t$ if 
 $$(s,⊳,x,⊳,ϵ,...,⊳,ϵ)→^{M^t} (H,w_1,u_1,...,w_k,u_k),$$
 where $H∈\{h,yes,no\}$. If $M(x)=↗$, then the runtime is considered to be $∞.$
+
+
+# Time Complexity
+Machine $M$ **operates within time** $f(n),$ if for any input string $x,$ the runtime by $M$ on $x$ is at most $f(|x|)$ where $|x|$ is the size of the input $x.$ 
+
+Also, $f(n)$ is **(upper) time bound** for $M$ and the language $L$ decided by $M$ belongs to the **time complexity class** $\mathbf{TIME}(f(n)).$
+
+The set of all languages decidable by deterministic Turing machines in polynomial time is defined as:
+$$
+𝐏 = ⋃_{k>0} \mathbf{TIME}(n^k).
+$$
+
+# Space Complexity
+A $k$-tape Turing machine $k>2$ **with input and output** is an ordinary $k$-tape Turing machine with the following restrictions on the transitions function $δ$: 
+
+If $δ(q,σ_1,...,σ_k)=(p,ρ_1,D_1,...,ρ_k,D_k),$ then
+
+1) $ρ_1=σ_1$ (read-only input string)
+2) $D_k≠←$ (write-only output string), and
+3) if $σ_1=⊔,$ then $D_1=←$ (end of input respected).
+
+
+## Space Usage
+Suppose for a $k$-tape Turing machine $M$ and an input $x$ we have
+$$(s,⊳,x,⊳,ϵ,...,⊳,ϵ)→^{M^*} (H,w_1,u_1,...,w_k,u_k),$$
+where $H∈\{h,yes,no\}$ is Halting state. Then, the **space used** is
+$$∑_{i=1}^k|w_i u_i|$$
+
+If $M$ is a Turing machine *with input and output*, the space used is
+$$∑_{i=2}^{k-1}|w_i u_i|$$
+We exclude the effect of reading the input and writing the output as regards TM space usage.
+
+Let $f:ℕ→ℝ^+$. Turing machine $M$ **operates within space** $f(n)$ if for any input $x$, $M$ uses space at most $f(|x|).$
+
+## Space Complexity Classes
+The **space complexity class** $\mathbf{SPACE}(f(n))$ comprises the family of languages $L$ that can be decided by Turing machines with input and output operating within space $f(n).$
+
+The class $\mathbf{SPACE}(log(n))$ is denoted by $𝐋.$
+
+
+# Nondeterministic Turing Machines
+A nondeterministic Turing machine (NTM) is a quadruple $N=(K,Σ,Δ,s)$ where $Δ$ is a **transition relation**:
+$$
+Δ⊆(K × Σ) × [(K∪\{h,yes,no\})×Σ×\{→,←,-\}]
+$$
+
+Yields is a relation $(q,w,u)⊢_N(q',w',u')$ if there exists a tuple in $Δ$ that makes this a legal transition.
+
+A nondeterministic Turing machine $N$ **decides** a language $L$ if for any $x∈Σ^*,$ the following holds
+
+1) all the computation sequences of $N$ on input $x$ halt, and
+2) $x∈L$ iff at least one of them ends in state $yes$
