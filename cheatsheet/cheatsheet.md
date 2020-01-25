@@ -170,9 +170,75 @@ $$
 Δ⊆(K × Σ) × [(K∪\{h,yes,no\})×Σ×\{→,←,-\}]
 $$
 
-Yields is a relation $(q,w,u)⊢_N(q',w',u')$ if there exists a tuple in $Δ$ that makes this a legal transition.
+Yields is a relation $(q,w,u)⊢_N(q',w',u')$ if there exists a tuple in $Δ$ that makes this a legal transition. We have relations $⊢_N^k$ and $⊢_N^*$ defined as previosly.
 
 A nondeterministic Turing machine $N$ **decides** a language $L$ if for any $x∈Σ^*,$ the following holds
 
 1) all the computation sequences of $N$ on input $x$ halt, and
 2) $x∈L$ iff at least one of them ends in state $yes$
+
+## Time Complexity Classes
+A nondeterministic Turing machine $N$ decides a language $L$ **in time** $f(n)$ if $N$ decides $L$ and for any $x∈Σ^*,$ if $(x,⊳,x)⊢_N^k(q,w,u),$ then $k≤f(|x|).$
+
+The time complexity class $\mathbf{NTIME}(f(n))$ comprises the family of languages $L$ that can be decided by nondeterministic Turing machines in time $f(n).$
+
+The family $\mathbf{NP}$ of all languages decidable by nondeterministic Turing machines in polynomial time is defined as 
+$$\mathbf{NP} = ⋃_{k>0}\mathbf{NTIME}(n^k).$$
+
+## Space Complexity Classes
+Given a $k$-tape NTM $N$ with input and output, we say that $N$ decides language $L$ **within space** $f(n)$ if $N$ decides $L$ and for any $x∈(Σ-\{⊔\})^*,$ if $(s,⊳,x,⊳,ϵ,...,⊳,ϵ)⊢_N^* (h,w_1,u_1,...,w_k,u_k),$ then $∑_{i=2}^{k-1}|w_iu_i|≤f(|x|).$
+
+
+# Universal Turing Machines and Undecidability
+## Encoding TMs using Integers
+Encoding a Turing machine $M=(K,Σ,δ,x)$ using integers:
+
+1) $1,2,...,|Σ|$ encode symbols $Σ$
+2) $|Σ|+1, ..., |Σ|+|K|$ encode states $K$ where $s=|Σ|+1$
+3) $|Σ|+|K|+1,...,|Σ|+|K|+6$ encode $←,→,-,h,yes,no$
+
+Turing machine $M=(K,Σ,δ,x)$ is encoded as
+$$b(|Σ|);b(|K|);e(δ)$$
+where $b(k)$ denotes an encoding of integer $k$ with exactly $⌈\log(|Σ|+|K|+6)⌉$ bits and $e(δ)$ is a sequence of pairs $((q,p),(p,ρ,D))$ describing the transition function $δ.$
+
+## Universal Turing Machine
+A **universal Turing machine** $U$ takes as input a description (encoding) of another Turing machine $M$ and an input $x$ for $M$, and the simulates $M$ on $x$ so that $U(M;x)=M(x).$
+
+## Halting Problem
+`HALTING` problem
+
+* Instance: The description of a Turing machine $M$ and its input $x.$
+* Question: Does $M$ halt on $x$?
+
+The corresponding language is defined as 
+$$H=\{M;x ∣ M(x)=↗\}.$$
+
+The Halting problem (the language $H$) is semidecidable.
+
+Halting is undecidable.
+
+<!-- TODO: proof -->
+
+## Undecidability
+Assume two languages $A$ and $B$. A **reduction from $B$ to $A$** is a transformation $t$ of the input $y$ of $B$ to the input $t(y)$ of $A$ such that, for all strings $y,$ it holds that $y∈B$ if and only if $t(y)∈A.$
+
+Problem $A$ is undecidable if algorithm for deciding $A$ implies algorithm for deciding the halting $H$. Can be shown by devising a reduction $t$ from halting $H$ to $A$.
+
+Suppose $A$ were decided by a Turing machine $M_A.$ Then $H$ would be decided by a machine $M_H$ that on input $M;x$
+
+1) First runs the machine $M_t$ computing the transformation
+2) Then runs $M_A$ on the result
+
+## Further Undecidable Problems
+The following languages are not decidable:
+
+1) $T=\{M ∣ M \text{ halt on all inputs}\}$. Correspond to problem `TOTAL`
+2) $\{M;x ∣ M(x)=y \text{ for some } y\}$
+3) $\{M;x ∣ \text{the computation of } M \text{ on input } x \\ \text{ uses all states of } M\}$
+4) $\{M;x;y ∣ M(x)=y\}$
+
+A reduction of `HALTING` to `TOTAL`:
+
+* Given input $M;x,$ consider a machine $M^x$ that works as follows: $M^x(y)$: if $y=x$ then $M(x)$ else halt.
+* Define a reduction maping $t(M;x)=M^x.$
+* Now $M;x∈H$ iff $M$ halts on $x$ iff $M^x$ halts on all input iff $M^x∈T.$
