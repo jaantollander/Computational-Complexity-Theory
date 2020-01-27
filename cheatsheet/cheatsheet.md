@@ -16,22 +16,23 @@ geometry:
 ---
 <!-- Definitions, notation, examples -->
 
-<!-- O-notation, example of tape, example of transition diagram, Halting problem, reduction, Rice's theorem
+<!-- O-notation, an example of tape, an example of a transition diagram, Halting problem, reduction, Rice's theorem
 
 Linear speedup: Time and memory
 -->
 
+This cheat sheet is based on the textbook by @papa1994.
 
 # Deterministic single-tape Turing machine
 A Turing machine is a quadruple $M=(K,Σ,δ,s)$ where
 
 * $K$ is a finite set of **states** and $s∈K$ is a designated **initial state**,
 * $Σ$ is a finite set of **symbols** (the **alphabet** of $M$) so that $⊳,⊔∈Σ$
-  * $⊳$ is the **start symbol** and
-  * $⊔$ is the **blank symbol**,
+ * $⊳$ is the **start symbol** and
+ * $⊔$ is the **blank symbol**,
 * $δ$ is the **transition function**: 
-  $$δ : K×Σ → (K∪\{h,yes,no\})×Σ×\{→,←,-\}$$
-  where the **halting state** $h$, the **accepting state** $yes$, and the **rejecting state** $no$ are not in $K$, and the symbols $→$ (right), $←$ (left), and $-$ (stay) indicate **cursor directions** on the input tape.
+ $$δ : K×Σ → (K∪\{h,yes,no\})×Σ×\{→,←,-\}$$
+ where the **halting state** $h$, the **accepting state** $yes$, and the **rejecting state** $no$ are not in $K$, and the symbols $→$ (right), $←$ (left), and $-$ (stay) indicate **cursor directions** on the input tape.
 
 ## Transition functions
 For current state $q∈K$ and current symbol $σ∈Σ$, $δ(q,σ)=(p,ρ,D)$ where 
@@ -40,16 +41,16 @@ For current state $q∈K$ and current symbol $σ∈Σ$, $δ(q,σ)=(p,ρ,D)$ wher
 * $ρ$ is the symbol to be replacing $σ$, and
 * $D∈\{→,←,-\}$ is the direction in which the cursor will move.
 
-It is required that $⊳$ alway directs the cursor to the right and is never erased. Formally, for any states $p$ and $q$ we have $δ(q,⊳)=(p,⊳,→)$.
+It is required that $⊳$ alway directs the cursor to the right and is never erased. Formally, for any states, $p$ and $q$ we have $δ(q,⊳)=(p,⊳,→)$.
 
-If the machine moves off the right end of the tape, it reads the black symbol $⊔$. String of the tape can become longer, but not shorter. The blanks $⊔$ keep track of the space used by the machine.
+If the machine moves off the right end of the tape, it reads the black symbol $⊔$. The string of the tape can become longer, but not shorter. The blanks $⊔$ keep track of the space used by the machine.
 
 ## Starting and Halting
 The program starts with 
 
 * initial state $s$,
-* the tape contents initialised to $⊳x$ where the **input** $x$ is a finitely long string in $(Σ-\{⊔\})^*$ and
-* the cursor pointing to $⊳$.
+* the tape contents initialized to $⊳x$ where the **input** $x$ is a finitely long string in $(Σ-\{⊔\})^*$ and
+* the cursor is pointing to $⊳$.
 
 Machine has **halted** when it has reached one of the halting states $\{h,yes,no\}$. On $yes$, machine **accepts** the input, and on $no$ machine **rejects** the input.
 
@@ -170,12 +171,12 @@ $$
 Δ⊆(K × Σ) × [(K∪\{h,yes,no\})×Σ×\{→,←,-\}]
 $$
 
-Yields is a relation $(q,w,u)⊢_N(q',w',u')$ if there exists a tuple in $Δ$ that makes this a legal transition. We have relations $⊢_N^k$ and $⊢_N^*$ defined as previosly.
+Yields is a relation $(q,w,u)⊢_N(q',w',u')$ if there exists a tuple in $Δ$ that makes this a legal transition. We have relations $⊢_N^k$ and $⊢_N^*$ defined as previously.
 
-A nondeterministic Turing machine $N$ **decides** a language $L$ if for any $x∈Σ^*,$ the following holds
+A nondeterministic Turing machine $N$ **decides** a language $L$ if for any $x∈Σ^*,$ the following holds.
 
 1) all the computation sequences of $N$ on input $x$ halt, and
-2) $x∈L$ iff at least one of them ends in state $yes$
+2) $x∈L$ iff at least one of them ends in-state $yes$
 
 ## Time Complexity Classes
 A nondeterministic Turing machine $N$ decides a language $L$ **in time** $f(n)$ if $N$ decides $L$ and for any $x∈Σ^*,$ if $(x,⊳,x)⊢_N^k(q,w,u),$ then $k≤f(|x|).$
@@ -220,14 +221,19 @@ Halting is undecidable.
 <!-- TODO: proof -->
 
 ## Undecidability
-Assume two languages $A$ and $B$. A **reduction from $B$ to $A$** is a transformation $t$ of the input $y$ of $B$ to the input $t(y)$ of $A$ such that, for all strings $y,$ it holds that $y∈B$ if and only if $t(y)∈A.$
+Assume two languages $B$ and $A$. A **reduction from $B$ to $A$** is a transformation $t$ of the input $y$ of $B$ to the input $t(y)$ of $A$ such that, for all strings $y,$ it holds that 
+$$y∈B \text{ if and only if } t(y)∈A.$$
 
-Problem $A$ is undecidable if algorithm for deciding $A$ implies algorithm for deciding the halting $H$. Can be shown by devising a reduction $t$ from halting $H$ to $A$.
+Problem $A$ is undecidable if the algorithm for deciding $A$ implies an algorithm for deciding the halting $H$. It can be shown by devising a reduction $t$ from halting $H$ to $A$.
 
-Suppose $A$ were decided by a Turing machine $M_A.$ Then $H$ would be decided by a machine $M_H$ that on input $M;x$
+Suppose $A$ were decided by a Turing machine $M_A.$ Then $H$ would be decided by a machine $M_H$ that on input $M;x$.
 
-1) First runs the machine $M_t$ computing the transformation
-2) Then runs $M_A$ on the result
+$M_H(M;x)$:
+
+1) $y←M_t(M;x)$ 
+2) $M_A(y)$
+
+First, runs the machine $M_t$ computing the transformation $t.$ Then, runs $M_A$ on the result.
 
 ## Further Undecidable Problems
 The following languages are not decidable:
@@ -239,6 +245,9 @@ The following languages are not decidable:
 
 A reduction of `HALTING` to `TOTAL`:
 
-* Given input $M;x,$ consider a machine $M^x$ that works as follows: $M^x(y)$: if $y=x$ then $M(x)$ else halt.
-* Define a reduction maping $t(M;x)=M^x.$
-* Now $M;x∈H$ iff $M$ halts on $x$ iff $M^x$ halts on all input iff $M^x∈T.$
+* Given input $M;x,$ consider a machine $M_x$ that works as follows: $M_x(y)$: if $y=x$ then $M(x)$ else halt.
+* Define a reduction mapping $t(M;x)=M_x.$ (That is, the input $x$ is hardcoded into the machine code of $M$ and the results is the new code.)
+* Now $M;x∈H$ iff $M$ halts on $x$ iff $M_x$ halts on all input iff $M_x∈T.$
+
+
+# References
