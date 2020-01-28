@@ -41,7 +41,22 @@ Therefore we have $\mathbf{PSPACE}⊆\mathbf{EXP}$.
 
 
 # H2.3
-Reduce language $L_7$ to language halt $H$.
+Reduce language halting $H$ to language $A$ where
+
+* $H=\{M;x ∣ M \text{ halts on } x\}$
+* $A = \{M ∣ M \text{ accepts strings of length } |x|≤7 \text{, and only those}\}$.
+
+We use similar proof as the example of reducing halting to total:
+
+---
+
+Given input $M;x,$ consider a machine $M_x$ that works as follows:
+
+$M_x(y)$: **if** $|y|≤7$ and $M(x)$ halts **then** $yes$ **else** $↗.$
+
+Define a reduction mapping $t(M:x)=M_x,$ which hard codes the input $x$ to the machine code of $M$ resulting in new code.
+
+Now $M;x∈H$ iff $M$ halts on input $x$ iff $M_x$ accepts string of length $≤7$ iff $M_x∈A.$
 
 
-# References
+<!-- # References -->
