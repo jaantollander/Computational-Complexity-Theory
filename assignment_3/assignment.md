@@ -42,6 +42,8 @@ In each recursive step the size of $v$ is halved, thus, the circuit has depth $O
 
 
 # H3.2
+We refer to @Vadhan2010.
+
 ## (i)
 We have sizes $|\{0,1\}|=2$ and $|\{0,1\}^n|=2^n$. 
 
@@ -50,15 +52,21 @@ $$f: \{0,1\}^n → \{0,1\}$$
 is $2^{2^n},$ that is, there are $2^n$ inputs for each output.
 
 ## (ii)
+We can express a truth table in DNF form as
+$$
+f(x) = ⋁_{α:f(α)=1} ⋀_{i=1}^n (x_i=α_i).
+$$
 
-
+With $n$ variables the formula has size of $O(n2^n),$ which means that every boolean function $f$ can be computed by a circuit of size $O(n2^n),$ that is, number of gates.
 
 ## (iii)
-
+Since some function require circuits of size $m=O(n2^n)$ to compute, not all function cannot be computed by circuits with $m=2^n/2n$ (or fewer) gates.
 
 
 # H3.3
 We have boolean formula $ϕ$ in conjunctive normal form where each clause has exactly two literals. We will prove that we can decide satisfiability of $ϕ$ in polynomial time.
+
+[2-satisfiability](https://en.wikipedia.org/wiki/2-satisfiability)
 
 ---
 
@@ -67,13 +75,18 @@ Let the variables in formula $ϕ$ be $X=\{x_1,...,x_n\}.$ We will construct a di
 * The set of vertices $V$ are all the $2n$ literals over $X,$ that is, $\{x_1,¬x_1, ..., x_n, ¬x_n\}.$
 * The set of edges $E$ consists of directed edges $¬α→β$ and $¬β→α$ for every clause $(α∨β)$ in $ϕ$.
 
-Deciding satisfiability for $ϕ$ reduces to finding ... in graph $G_ϕ.$
+The graph $G_ϕ$ is called an *implication graph*. Deciding satisfiability for $ϕ$ reduces to finding *strongly connected components* in the implication graph $G_ϕ.$
 
 ## (a)
-
+In the implication graph $G_ϕ$, if a variable and its negation belong to the same strongly connected component, the literals must have same values, therefore, the instance cannot be satisfied.
 
 ## (b)
-* $|V|=2n$
-* $|E|≤...$
+Runtime of finding strongly connected components is $O(|V|+|E|).$ We have
 
-<!-- # References -->
+* $|V|=2n,$ and
+* $|E|≤\binom{2n}{2}⋅2=O(n^2)$ -- Maximum number of clauses in formula $ϕ$ times two vertices per clause.
+
+Therefore, runtime is polynomial in respect to the number of variables $n.$
+
+
+# References
