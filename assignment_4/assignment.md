@@ -36,7 +36,13 @@ is true only if $z$ and $¬x$ are true, which is evident from its truth table.
 
 ---
 
-logical equivalence, force exactly one literal in each clause to be true
+We can reduce 3SAT to 1-IN-3-SAT by replacing each clause $c=(x∨y∨z)$ in 3SAT with the clause
+$$
+c'=(¬x∨a∨b) ∧ (b∨y∨c) ∧ (c∨d∨¬z).
+$$
+
+We can prove that $c'$ is 1-IN-3 satisfiable if and only if $c$ is satisfiable by using a truth table.
+
 
 
 # H4.2
@@ -61,15 +67,15 @@ The graph $G'$ contains the original graph $G$ and auxialiary vertices $V'$ and 
 
 ---
 
-TODO: figure
+<!-- TODO: figure -->
 
 We can force the inclusion of atleast one of the vertices $(u,v)∈E$ in the dominating set such that it satisfies the condition for vertex cover as follows.
 
-For each edge $(u,v)∈E,$ we add vertex $w$ to $V'$ and edges $(u,w)$ and $(v,w)$ to $E'.$ The dominating set must now include atleast one of the vertices in $u,v$ or $w$. If $w$ is included, we can replace it with $u$ or $v$ because the vertices $u,v$ and $w$ are adjacent, thus, the set still remains a dominating set. 
+For each edge $(u,v)∈E,$ we add vertex $w$ to $V'$ and edges $(u,w)$ and $(v,w)$ to $E'.$ The dominating set must now include atleast one of the vertices in $u,v$ or $w$. If $w$ is included, we can replace it with $u$ or $v$ because the vertices $u,v$ and $w$ are adjacent, thus, the set still remains a dominating set.
 
 ---
 
-Now, we find a dominating set $U'⊆V∪V'$ of size $k+n$ in graph $G'.$ Then, we create a new dominating set $U⊆V$ such that for each vertex $u∈U'$ 
+Now, we find a dominating set $U'⊆V∪V'$ of size $k+n$ in graph $G'.$ Then, we create a new dominating set $U⊆V$ such that for each vertex $u∈U'$
 
 1) If $u∈V$ and $u$ is not isolated, add $u$ to $U$.
 2) If $u∈V'$ add one of its adjacent vertices to $U$.
@@ -78,14 +84,34 @@ The dominating set $U$ is a vertex cover of size $k$ of graph $G.$
 
 ---
 
-TODO: logspace
+The reduction is computable in constant space, and is therefore logspace computable.
 
 
 # H4.3
 ## (i)
+A Turing machine $M$ (with input and output) on input $k;x$, where $k≥0$, computes the mapping $x↦1^{k|x|}$ in linear time and constant space as follows.
 
+1) Copy $k$ to work tape 1.
+2) Copy $k$ from work tape 1 to work tape 2, which will act as a counter. Input tape cursor should be now in the first symbol of $x.$
+3) Write $1$ for $k$ times on the output tape by reducing the counter each time $1$ is written until it reaches zero.
+4) Move the input tape cursor to the next symbol of $x.$
+5) Copy $k$ from work tape 1 to work tape 2.
+6) Repeat from step (3) or halt if input tape cursor is on $⊔.$
 
 ## (ii)
+We have padded universal set
+$$
+U = \{M;x;1^{|M||x|} ∣ \text{Turing machine } M \text{ accepts input } x \text{ in space } |x|\}
+$$
+
+<!-- $U$ is linear-complete if -->
+
+<!-- $U∈\mathbf{SPACE}(n)$ -->
+
+## (iii)
+
+
+## (iiii)
 
 
 # References
