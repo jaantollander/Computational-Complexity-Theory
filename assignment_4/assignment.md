@@ -24,6 +24,8 @@ For all clauses $c$ in $ϕ$ with more than $3$ literals
 
 ---
 
+![](figures/modified-sat.png)
+
 Proof: Literal $z$ is forced to act as literal $¬x$ because
 $$
 z ∧ (x∨z) ∧ (¬x∨¬z)
@@ -43,6 +45,9 @@ $$
 
 We can prove that $c'$ is 1-IN-3 satisfiable if and only if $c$ is satisfiable by using a truth table.
 
+![](figures/1-in-3-sat.png)
+
+As can be seen, each of the first 7 rows are 1-in-3 satisfiable, but the last row representing assignment $x=0,y=0,z=0$ is not 1-in-3 satisfiable.
 
 
 # H4.2
