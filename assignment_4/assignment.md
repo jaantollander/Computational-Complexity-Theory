@@ -72,7 +72,7 @@ The graph $G'$ contains the original graph $G$ and auxialiary vertices $V'$ and 
 
 ---
 
-<!-- TODO: figure -->
+![](figures/vertex-cover-reduction-to-domating-set.svg)
 
 We can force the inclusion of atleast one of the vertices $(u,v)∈E$ in the dominating set such that it satisfies the condition for vertex cover as follows.
 
