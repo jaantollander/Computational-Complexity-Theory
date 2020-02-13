@@ -82,7 +82,7 @@ Let $L⊆(Σ-\{⊔\})^*$ be a **language**.
 A Turing machine $M$ **decides** $L$, if for every string $x∈(Σ-\{⊔\})^*$, 
 
 * if $x∈L$, then $M(x)=yes$ and
-* if $x∈L$, then $M(x)=no$.
+* if $x∉L$, then $M(x)=no$.
 
 If $L$ is decided by some Turing machine, $L$ is called a **decidable** language.
 
@@ -91,7 +91,7 @@ A Turing machine $M$ **computes** a function $$f:(Σ-\{⊔\})^* → Σ^*,$$ if f
 A Turing machine $M$ **accepts** or **semidecides** $L$, if for every string $x∈(Σ-\{⊔\})^*$, 
 
 * if $x∈L$, then $M(x)=yes$ and
-* if $x∈L$, then $M(x)=↗$.
+* if $x∉L$, then $M(x)=↗$.
 
 If $L$ is accepted by some Turing machine, $L$ is called a **semidecidable** language.
 
@@ -212,7 +212,7 @@ A **universal Turing machine** $U$ takes as input a description (encoding) of an
 * Question: Does $M$ halt on $x$?
 
 The corresponding language is defined as 
-$$H=\{M;x ∣ M(x)=↗\}.$$
+$$H=\{M;x ∣ M(x)≠↗\}.$$
 
 The Halting problem (the language $H$) is semidecidable.
 
