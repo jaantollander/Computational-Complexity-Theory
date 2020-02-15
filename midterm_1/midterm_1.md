@@ -3,8 +3,8 @@ urlcolor: "blue"
 classoption:
 - twocolumn
 geometry:
-- right=1.5cm
-- left=1.5cm
+- right=1cm
+- left=1cm
 - top=1.5cm
 - bottom=1.5cm
 pagestyle: empty
@@ -34,11 +34,9 @@ pagestyle: empty
 
 **Space usage**: $∑_{i=2}^{k-1} |w_i u_i|$ where $|w_i u_i|$ is the length of the concatenation of strings $w_i$ and $u_i.$
 
-TODO: linear speedup
+<!-- TODO: linear speedup -->
 
----
-
-TODO: nondeterministic Turing machine
+<!-- TODO: nondeterministic Turing machine -->
 
 ---
 
@@ -46,15 +44,27 @@ TODO: nondeterministic Turing machine
 
 **Decidable/Recursive** $∀x∈(Σ-\{⊔\})^*$: If $x∈L$, then $M(x)=yes$ and if $x∉L$, then $M(x)=no$
 
-**Semidecidable/Accepts** $∀x∈(Σ-\{⊔\})^*$: If $x∈L$, then $M(x)=yes$ and if $x∉L$, then $M(x)=↗$
+**Semidecidable/Recursively enumerable/Accepts** $∀x∈(Σ-\{⊔\})^*$: If $x∈L$, then $M(x)=yes$ and if $x∉L$, then $M(x)=↗$
 
 **Universal Turing machine**: $U(M;x)=M(x)$, simulates machine $M$ on input $x$
 
-**Halting problem**: Does $M$ halt on $x$? Language $H=\{M;x ∣ M(x)≠↗\}$ is semidecidable and undecidable (All $M;x$ where $M$ halts on $x$).
+**Halting problem**: Does $M$ halt on $x$? Language $H=\{M;x ∣ M(x)≠↗\}$ is semidecidable and undecidable (All $M;x$ where $M$ halts on $x$). Proof:
 
-**Undecidability**: TODO: Reduce $H$ to $A$ ...
+1) Assume TM $M_H$ decides $H$
+2) $D(M)$: **if** $M_H(M;M)=yes$ **then** $↗$ **else** $yes$
+3) $D(D)$ has no satisfactory result. We have condadictions:
+   * $D(D)≠↗,$ then $M_H(D;D)=yes$ and $D(D)=↗$
+   * $D(D)=↗,$ then $M_H(D;D)=no$ and $D(D)≠↗$
 
-TODO: proof of halting is undecidable
+**Undecidability**: Reduce deciding $H$ to deciding $A$ with reduction $t.$
+
+1) $M_H(M;x)$: $y←M_t(M;x)$; **return** $M_A(y)$
+
+**Example**: Reduction of $H$ to $T=\{M|M \text{ halts on all inputs}\}$
+
+1) $M_x(y)$: **if** $y=x$ **then** $M(x)$ **else** halt
+2) Define reduction mapping $t(M;x)=M_x$
+3) $M;x∈H$ iff $M$ halts on $x$ iff $M_x$ halts on all inputs iff $M_x∈T$
 
 ---
 
