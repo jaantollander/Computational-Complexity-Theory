@@ -30,7 +30,7 @@ pagestyle: empty
 
 **With input and output**: First tape is read-only and last tape is write only.
 
-**Runtime** is $t$ if $(s,⊳,x,⊳,ϵ,...,⊳,ϵ)→^{M^t} (H,w_1,u_1,...,w_k,u_k),$ where $x$ is the input and $H∈\{h,yes,no\}.$ 
+**Runtime** is $t$ if $(s,⊳,x,⊳,ϵ,...,⊳,ϵ)→^{M^t} (H,w_1,u_1,...,w_k,u_k),$ where $x$ is the input and $H∈\{h,yes,no\}.$ Output string $w_k u_k$ is read from $k$th tape. 
 
 **Space usage**: $∑_{i=2}^{k-1} |w_i u_i|$ where $|w_i u_i|$ is the length of the concatenation of strings $w_i$ and $u_i.$
 
@@ -90,4 +90,22 @@ $C$ is **closed under reductions** if $L'≤_\mathrm{L}L$ and $L∈C,$ then $L'�
 
 ---
 
-TODO: circuit value, cicuit sat, sat, ...
+**Computation table method**: Used to establish the first complete problems for complexity class.
+
+**Circuit value** is $𝐏$-complete
+
+**Circuit sat** is $𝐍𝐏$-complete
+
+---
+
+**Boolean expression**: variables $X=\{x_1,x_2,...,x_n\}$, connectives $∧,∨,¬$, literals $x_i,¬x_i$
+
+**Conjunctive normal form (CNF)**:
+
+**Disjunctive normal form (DNF)**:
+
+**$n$-ary Boolean function** $f:\{0,1\}^*→\{0,1\}$, $2^{2^n}$ functions
+
+Boolean function $f$ to boolean expression $ϕ$: Compute truth table from $f$. Convert truth table to CNF formula $ϕ.$ Worst case size of $ϕ$ is $O(n2^n).$
+
+<!-- TODO: boolean circuit -->
