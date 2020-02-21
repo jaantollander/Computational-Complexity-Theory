@@ -24,7 +24,7 @@ pagestyle: empty
 
 **$k$-tape Turing machine**: $M=(K,Σ,δ,s)$
 
-**Transition function**: $δ(q,σ_1,...,σ_2) = (p,ρ_1,D_1,...,ρ_k,D_k)$
+**Transition function**: $δ(q,σ_1,...,σ_k) = (p,ρ_1,D_1,...,ρ_k,D_k)$
 
 **Configuration**: $(q,w_1,u_1,...,w_k,u_k)$
 
@@ -44,7 +44,7 @@ pagestyle: empty
 
 **Decidable/Recursive** $∀x∈(Σ-\{⊔\})^*$: If $x∈L$, then $M(x)=yes$ and if $x∉L$, then $M(x)=no$
 
-**Semidecidable/Recursively enumerable/Accepts** $∀x∈(Σ-\{⊔\})^*$: If $x∈L$, then $M(x)=yes$ and if $x∉L$, then $M(x)=↗$
+**Semidecidable/Recursively enumerable** $∀x∈(Σ-\{⊔\})^*$: If $x∈L$, then $M(x)=yes$ and if $x∉L$, then $M(x)=↗$
 
 **Universal Turing machine**: $U(M;x)=M(x)$, simulates machine $M$ on input $x$
 
