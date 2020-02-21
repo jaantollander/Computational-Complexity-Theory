@@ -1,5 +1,5 @@
 BUILDDIR=build
-FILENAME=assignment
+FILENAME=assignment_4
 
 pdf:
 	mkdir $(BUILDDIR) -p
