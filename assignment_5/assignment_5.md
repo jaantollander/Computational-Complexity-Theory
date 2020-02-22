@@ -35,7 +35,7 @@ x_{n,1},&...,x_{n,3m}, \\
 \right\}.
 $$
 
-All literals in each row are required to have the same truth assignment.
+TODO: All literals in each row are required to have the same truth assignment.
 
 We crate the set of edges $E$:
 
@@ -50,6 +50,19 @@ Now a cut $(S,V-S)$ of size $5m$ in $G_ϕ$ corresponds to a truth assignment sat
 
 
 # H5.2
+We show that CLIQUE COVER is $𝐍𝐏$-complete by reduction from GRAPH COLORING to CLIQUE COVER.
+
+---
+
+Given simple graph $G=(V,E)$ its complement graph is $H=(V,E')$ where $E'=(V×V)∖E,$ that is, vertices are adjacent in $H$ if an only if they are not adjacent in $G.$
+
+Deciding graph coloring of at most $K$ colors in $G$ reduces to deciding clique cover of at most $K$ cliques in $H.$ Each clique corresponds to unique color and all vertices in a clique have the same color.
+
+Proof: 
+
+1) If $(u,v)∈E$ thus $u$ and $v$ have different colors. Then $(u,v)∉E'$ thus $u$ and $v$ belong to different cliques.
+
+2) If $(u,v)∉E$ thus $u$ and $v$ can have the same colors. Then $(u,v)∈E'$ thus $u$ and $v$ can belong to the same clique.
 
 
 # H5.3
