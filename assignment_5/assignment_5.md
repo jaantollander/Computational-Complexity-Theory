@@ -67,6 +67,38 @@ Proof:
 
 
 # H5.3
+Formalization of the mention all problem.
+
+* MENTION ALL
+* INSTANCE: Families $F'=\{S'_1,...,S'_n\}$ and $F''=\{S''_1,...,S''_n\}$ of subsets of a finite set $U.$
+* QUESTION: Is there subfamily $\{S_1,...,S_n\}$ where $S_i∈\{S'_i,S''_i\}$ whose union is $U?$
+
+---
+
+Generalization of MENTION ALL
+
+* MENTION $k$-ALL
+* INSTANCE: Families $F^1=\{S^1_1,...,S^1_n\}, ..., F^k=\{S^k_1,...,S^k_n\}$ of subsets of a finite set $U$ where $k≥2$ is integer.
+* QUESTION: Is there subfamily $\{S_1,...,S_n\}$ where $S_i∈\{S_i^1,...,S_i^k\}$ whose union is $U?$
+
+---
+
+Set cover problem
+
+* SET COVER
+* INSTANCE: A family $F=\{S_1,...,S_n\}$ of subsets of a finite set $U$ and an integer $B.$
+* QUESTION: Is there a subfamily of $≤B$ sets in $F$ whose union is $U?$
+
+---
+
+Reduction from SET COVER to MENTION $k$-ALL.
+
+We can set $F^1=...=F^B=F$ to reduce set cover to mention $k$-all.
+
+---
+
+Reduction from MENTION $k$-ALL to MENTION ALL
+
 
 
 <!-- # References -->
