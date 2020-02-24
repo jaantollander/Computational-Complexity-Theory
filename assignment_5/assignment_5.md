@@ -67,22 +67,6 @@ Proof:
 
 
 # H5.3
-Formalization of the mention all problem.
-
-* MENTION ALL
-* INSTANCE: Families $F'=\{S'_1,...,S'_n\}$ and $F''=\{S''_1,...,S''_n\}$ of subsets of a finite set $U.$
-* QUESTION: Is there subfamily $\{S_1,...,S_n\}$ where $S_i∈\{S'_i,S''_i\}$ whose union is $U?$
-
----
-
-Generalization of MENTION ALL
-
-* MENTION $k$-ALL
-* INSTANCE: Families $F^1=\{S^1_1,...,S^1_n\}, ..., F^k=\{S^k_1,...,S^k_n\}$ of subsets of a finite set $U$ where $k≥2$ is integer.
-* QUESTION: Is there subfamily $\{S_1,...,S_n\}$ where $S_i∈\{S_i^1,...,S_i^k\}$ whose union is $U?$
-
----
-
 Set cover problem
 
 * SET COVER
@@ -91,14 +75,39 @@ Set cover problem
 
 ---
 
-Reduction from SET COVER to MENTION $k$-ALL.
+Formalization of the mention all problem.
 
-We can set $F^1=...=F^B=F$ to reduce set cover to mention $k$-all.
+* MENTION ALL
+* INSTANCE: Families $F'=\{S'_1,...,S'_n\}$ and $F''=\{S''_1,...,S''_n\}$ of subsets of a finite set $U.$
+* QUESTION: Is there subfamily $\{S_1,...,S_n\}$ where $S_i∈\{S'_i,S''_i\}$ for all $i=1,...,n$ whose union is $U?$
 
 ---
 
-Reduction from MENTION $k$-ALL to MENTION ALL
+Generalization of MENTION ALL
 
+* MENTION $k$-ALL
+* INSTANCE: Families $F^1=\{S^1_1,...,S^1_n\}, ..., F^k=\{S^k_1,...,S^k_n\}$ of subsets of a finite set $U$ where $k≥2$ is integer.
+* QUESTION: Is there subfamily $\{S_1,...,S_n\}$ where $S_i∈\{S_i^1,...,S_i^k\}$ for all $i=1,...,n$ whose union is $U?$
 
+---
+
+Reduction from SET COVER to MENTION $k$-ALL.
+
+We can set $F^1=...=F^B=F$ to reduce *set cover* to *mention $k$-all*.
+
+---
+
+Reduction from MENTION $k$-ALL to MENTION ALL.
+
+<!-- If $k$ is odd we pad the input with $F^{k+1}=\{∅,...,∅\}.$ -->
+
+If the recursive step of *mention all*, we set the elements in the subset families as follows. For all $i=1,...,n$:
+
+* $S_i'=S_1^1∪...∪S_i^{⌊k/2⌋}$
+* $S_i''=S_i^{⌊k/2⌋+1}∪...∪S_i^{k}$
+
+After the iteration we have solution $S_i∈\{S_i',S_i''\}$ if it exists. Each recursive step splits the subsets forming the union.
+
+We repeat the recursive step if solution exists until each subset $S_i$ is of of the subsets $\{S_i^1,...,S_i^k\}.$ It takes $\log_2 k$ iterations.
 
 <!-- # References -->
