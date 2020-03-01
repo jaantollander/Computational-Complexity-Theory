@@ -43,8 +43,10 @@ For this exercise, we refer to the paper by @McLoughlin1984.
 A binary linear code of length $n$:
 
 - *Parity check matrix* $H∈\{0,1\}^{m×n}$.
-- *Codeword* $c∈\{0,1\}^n$ which satisfies $H⋅c=0 \mod 2$.
-- *Covering radius* $ρ(H)=\max_{x∈\{0,1\}^n}\min_{c∈C} d(x,c)$ where $d$ is Hamming distance and $C$ is the set of all code words.
+- *Codeword* $y∈\{0,1\}^n$ which satisfies $Hy=0 \mod 2$.
+- *Covering radius* 
+  $$ρ_H=\max_{x∈\{0,1\}^n}\min_{y∈C_H} d(x,y)$$
+  where $d$ is Hamming distance and $C_H$ is the set of all code words.
 
 We define the problem COVERING RADIUS as:
 
@@ -56,9 +58,7 @@ QUESTION: Is the covering radius of the code defined by $H$ at most $r?$
 
 We define the language COVERING RADIUS.
 
-$$
-L = \{H;r ∣ H∈\{0,1\}^{m×n} \text{ such that } ρ(H)≤r\}
-$$
+$$L = \{H;r ∣ H∈\{0,1\}^{m×n} \text{ such that } ρ_H≤r\}$$
 
 That is, $L$ contains all strings $H;r$ where $H$ is a parity check matrix with covering radius of at most $r.$
 
@@ -66,19 +66,15 @@ That is, $L$ contains all strings $H;r$ where $H$ is a parity check matrix with 
 
 The language $L$ is in $Π_2^p$ iff there is a relation $R⊆(Σ^*)^3$ such that
 
-$$L=\{x ∣ ∀y_1∃y_2, (x,y_1,y_2)∈R\},$$
+$$L=\{z ∣ ∀x∃y, (x,y,z)∈R\},$$
 
-and whenever $(x,y_1,y_2)∈R$ then $|y_1|,|y_2|≤|x|^t$ for some $t$.
+and whenever $(x,y,z)∈R$ then $|x|,|y|≤|z|^t$ for some $t$.
 
 ---
 
-string $x=H;r$
+We can write the COVERING RADIUS question in form, $∀x∃y$ such that $d(x,y)≤r,$ where $x$ and $y$ are binary vectors and $Hy=0$ holds. 
 
-binary vectors $y_1,y_2$ as strings
-
-$Hy_1=y_2$
-
-$ρ(H)≤r$
+If we represent $x$ and $y$ as strings and set string $z=H;r$, then, have $|x|,|y|≤|z|^t$ for some $t$ whenever $(x,y,z)∈R.$
 
 
 # H6.3
