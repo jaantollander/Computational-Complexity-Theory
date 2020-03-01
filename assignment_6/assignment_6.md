@@ -10,11 +10,11 @@ urlcolor: "blue"
 For the theory, we refer to @papa1994.
 
 # H6.1
-We define the cumulative polynomial time hierarchy as follows.
+We define the cumulative polynomial-time hierarchy as follows.
 
 $$Σ_0^p=𝐏,\quad Σ_{k+1}^p=𝐍𝐏^{Σ_k^p},\quad 𝐏𝐇 = ⋃_{k≥0}Σ_k^p.$$
 
-Lets prove that
+Let us prove that
 
 $$\mathbf{PH} ⊆ \mathbf{PSPACE}.$$
 
@@ -34,7 +34,7 @@ Then the statement for $k+1$ is
 
 $$Σ_{k+1}^p=𝐍𝐏^{Σ_k^p}⊆\mathbf{NPSPACE}=\mathbf{PSPACE}$$
 
-By *Savitch's theorem*, deterministic and nondeterministic polynomial spaces are equivalent.
+By *Savitch's theorem*, deterministic and non-deterministic polynomial spaces are equivalent.
 
 
 # H6.2
@@ -60,7 +60,7 @@ We define the language COVERING RADIUS.
 
 $$L = \{H;r ∣ H∈\{0,1\}^{m×n} \text{ such that } ρ_H≤r\}$$
 
-That is, $L$ contains all strings $H;r$ where $H$ is a parity check matrix with covering radius of at most $r.$
+That is, $L$ contains all strings $H;r$ where $H$ is a parity check matrix with a covering radius of at most $r.$
 
 ---
 
@@ -72,7 +72,7 @@ and whenever $(x,y,z)∈R$ then $|x|,|y|≤|z|^t$ for some $t$.
 
 ---
 
-We can write the COVERING RADIUS question in form, $∀x∃y$ such that $d(x,y)≤r,$ where $x$ and $y$ are binary vectors and $Hy=0$ holds. 
+We can write the COVERING RADIUS question in the form, $∀x∃y$ such that $d(x,y)≤r,$ where $x$ and $y$ are binary vectors and $Hy=0$ holds. 
 
 If we represent $x$ and $y$ as strings and set string $z=H;r$, then, have $|x|,|y|≤|z|^t$ for some $t$ whenever $(x,y,z)∈R.$
 
