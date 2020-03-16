@@ -52,7 +52,11 @@ We say that $χ$ is a *certificate of graph isomorphism*.
 **Bob** must pick the vertices at random so that Alice cannot predict these vertices and fake the certificate for those vertices.
 
 # H8.2
+$$𝐏^{𝐏𝐏}=𝐏^{\#𝐏}$$
 
+If a polynomial time Turing machine with **#P** oracle does a query and receive answer $x,$ then a polynomial time Turing machine with **PP** oracle can do $|x|$ queries to obtain $x$, such that first one obtains the most significant bit of $x$, second one the second most significant bit of $x$ and so forth.
+
+Since the difference between the amount of queries is linear, the classes are equal.
 
 # H8.3
 
