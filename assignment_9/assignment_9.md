@@ -81,9 +81,9 @@ $$\operatorname{even}(i)=
 0, & \text{ otherwise}\end{cases}.$$
 
 
-We define the size of base set as $|U|=n=2^m.$ Then, lets partition $U$ into two equal-sized, disjoint subsets $S'$ and $S''.$ Let $T=\{S',S''\}$ be the optimal cover with two sets.
+We define the size of base set as $|U|=n.$ Then, lets partition $U$ into two equal-sized, disjoint subsets $S'$ and $S''.$ Let $T=\{S',S''\}$ be the optimal cover with two sets.
 
-Now, we can construct the instance $S=\{S_1,...,S_m\}$ in which greedy algorithm picks $\log_2 n$ sets as follows.
+Now, we can construct the instance $S=\{S_1,...,S_m\}$ in which greedy algorithm picks all $m=\log_2 n$ sets as follows.
 
 We begin with $K_0'=S',K_0''=S''$ and $T_0'=∅,T_0''=∅.$ For all $i=1,...,m-2$ we have
 
@@ -95,11 +95,19 @@ Finally, we define $S_{m-1}=S'$ and $S_{m}=S''.$
 
 \pagebreak
 
-The idea of the construction is that the set $S_i=T_i'∪T_i''$ for $i=1,...,m-2$ contains elements alternatingly half and half plus one of the elements sets $S'$ and $S''$ would cover if chosen. 
+The idea of the construction is that the set $S_i=T_i'∪T_i''$ for $i=1,...,m-2$ contains alternatingly half and half plus one of the elements that sets $S'$ or $S''$ would cover if chosen. 
 
 Thus $S_i$ always contains one more element that either set $S'$ or $S''$ could cover, therefore greedy algorithm will always choose it.
 
 
 # H9.3
+## (a)
+
+
+## (b)
+
+
+## (c)
+
 
 <!-- # References -->
