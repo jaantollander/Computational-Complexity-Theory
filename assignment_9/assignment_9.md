@@ -101,10 +101,31 @@ Thus $S_i$ always contains one more element that either set $S'$ or $S''$ could 
 
 
 # H9.3
-## (a)
+Let $ϕ$ be a 3CNF formula with $n$ variables and $m$ clauses.
 
+## (a)
+We can solve the satisfiability of $ϕ$ in $O(2^n⋅3m)$ iterations using brute force ($2^n$ possible truth assignments, $3m$ iterations to evaluate the formula). Therefore, 3SAT parameterized by the number of variables $n$ is in **FTP**.
 
 ## (b)
+In addition to $ϕ$, we have:
+
+- $X$ variable set of $ϕ$
+- $Z⊆X$ backdoor for $ϕ$
+- $Z^*$ the smallest backdoor
+- $|Z^*|≤k≤n$ where $k$ bouding size of the smallest backdoor
+
+Number of all possible backdoors of size $k$
+$$\binom{n}{k}≤\frac{n^k}{k!}$$
+
+Number of possible truth assignments of $Z^*$ variables
+$$2^k$$
+
+Iterations to evaluate $ϕ$ 
+$$3m$$
+
+Complexity of 3SAT parameterized by $k$ is in **XP**, since
+$$O\left(\binom{n}{k}⋅2^k⋅3m\right)=O((2n)^k⋅m)$$
+is polynomial for every constant value of parameter $k.$
 
 
 ## (c)
