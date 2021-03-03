@@ -28,8 +28,8 @@ A Turing machine is a quadruple $M=(K,Σ,δ,s)$ where
 
 * $K$ is a finite set of **states** and $s∈K$ is a designated **initial state**,
 * $Σ$ is a finite set of **symbols** (the **alphabet** of $M$) so that $⊳,⊔∈Σ$
- * $⊳$ is the **start symbol** and
- * $⊔$ is the **blank symbol**,
+  * $⊳$ is the **start symbol** and
+  * $⊔$ is the **blank symbol**,
 * $δ$ is the **transition function**: 
  $$δ : K×Σ → (K∪\{h,yes,no\})×Σ×\{→,←,-\}$$
  where the **halting state** $h$, the **accepting state** $yes$, and the **rejecting state** $no$ are not in $K$, and the symbols $→$ (right), $←$ (left), and $-$ (stay) indicate **cursor directions** on the input tape.
@@ -86,7 +86,7 @@ A Turing machine $M$ **decides** $L$, if for every string $x∈(Σ-\{⊔\})^*$,
 
 If $L$ is decided by some Turing machine, $L$ is called a **decidable** language.
 
-A Turing machine $M$ **computes** a function $$f:(Σ-\{⊔\})^* → Σ^*,$$ if for every string $x∈(Σ-\{⊔\})^*$, $M(x)=f(x).$ If such an $M$ exists, $f$ is called a **computable** function.
+A Turing machine $M$ **computes** a function $f:(Σ-\{⊔\})^* → Σ^*,$ if for every string $x∈(Σ-\{⊔\})^*$, $M(x)=f(x).$ If such an $M$ exists, $f$ is called a **computable** function.
 
 A Turing machine $M$ **accepts** or **semidecides** $L$, if for every string $x∈(Σ-\{⊔\})^*$, 
 

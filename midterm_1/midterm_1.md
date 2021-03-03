@@ -35,8 +35,9 @@ pagestyle: empty
 **Space usage**: $∑_{i=2}^{k-1} |w_i u_i|$ where $|w_i u_i|$ is the length of the concatenation of strings $w_i$ and $u_i.$
 
 <!-- TODO: linear speedup -->
-
 <!-- TODO: nondeterministic Turing machine -->
+<!-- TODO: savitch's theorem -->
+<!-- TODO: rice's theorem -->
 
 ---
 
@@ -72,6 +73,8 @@ pagestyle: empty
 
 **Complexity classes**: $\mathbf{TIME}(f)$, $\mathbf{SPACE}(f)$, $\mathbf{NTIME}(f)$, $\mathbf{NSPACE}(f)$, $f$ is proper complexity function
 
+**Complement class**: $\bar{C}=\{L ∣ \bar{L}∈C\}$
+
 **Closure under complement**: Deterministic time and space classes are closed under complement, that is, if $L∈C$, then $\bar{L}∈C$
 
 **Class inclusion**: $𝐋⊆𝐍𝐋⊆𝐏⊆𝐍𝐏⊆\mathbf{PSPACE}⊆\mathbf{EXP}$
@@ -100,9 +103,9 @@ $C$ is **closed under reductions** if $L'≤_\mathrm{L}L$ and $L∈C,$ then $L'�
 
 **Boolean expression**: variables $X=\{x_1,x_2,...,x_n\}$, connectives $∧,∨,¬$, literals $x_i,¬x_i$
 
-**Conjunctive normal form (CNF)**:
+**Conjunctive normal form (CNF)**: Clauses $(l_1 ∨ ... ∨ l_k)$, literals
 
-**Disjunctive normal form (DNF)**:
+**Disjunctive normal form (DNF)**: Implicant $(l_1 ∧ ... ∧ l_k)$, literals
 
 **$n$-ary Boolean function** $f:\{0,1\}^*→\{0,1\}$, $2^{2^n}$ functions
 
